@@ -1,107 +1,147 @@
-## Estudio de la zona muerta y de la zona de saturación ##
+## Dead Zone and Saturation Analysis
 
-Utilizaremos el modelo llamado toma datos para determinar tanto la zona muerta como la zona de saturación. El modelo toma datos esta fomrado por un subsistema PIERO_HW, compuesto por otros dos sistemas, el subsistema motores y el encoder.
+In this section, the dead zone and saturation of the system are studied. A data acquisition model ("toma_datos") is used to determine both effects.
 
-# Modelo PIERO_HW #
+The "toma_datos" model is composed of the PIERO_HW subsystem, which includes two main components: the motors subsystem and the encoder.
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/8a7e3ee8-263c-4c28-b662-f51bae8ee0a9)
+## PIERO_HW Model
 
-# Modelo motores #
+<img width="947" height="347" alt="1" src="https://github.com/user-attachments/assets/7736024c-a866-4a50-b064-0462dfef8b84" />
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/dfad85c2-b7f7-4fa8-b3c5-591c699915f1)
+This model represents the hardware of the system, including the motors and the encoder, which are responsible for actuation and measurement.
 
-# Modelo del encoder #
+## Motors Model
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/8a137dbc-baf0-4b49-b495-48a5b946dbcc)
+This model represents the behavior of the motors, including their dynamic response to input signals.
 
-# Modelo Toma Datos #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/16336478-b009-42ad-a4d6-4f3f2961dc35)
-
-# Señal rampa usada #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/7c6b57e4-c3ed-401c-a8bb-936f2d247717)
-
-# Scope y tabla de datos obtenida
-
-Observando en el SCOPE, vemos que tiene un retraso en la respuesta, dos picos de saturación tanto por arriba como por abajo y una pequeña inercia al finalizar la respuesta.
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/9645f687-064b-4845-b15f-c18dbecfd242)
-
-En la siguiente imagen se muestra la tabla de los datos obtenidos:
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/9dedd241-a494-4b14-a386-5af6134648da)
-
-Video de la determinación de la zona muerta:
-
-https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/f61d641d-ff20-491e-9659-25afaeca5b31
-
-## Control en Bucle Abierto ##
-
-El contro de bucle abierto hace uso del sistema PIERO_HW, anteriormente usado, y uno nuevo, el ControlBA.
-
-# ControlBA #
-
-Para el controlBA usaremos dos bloques llamados "Lookup with Linear Lagrange Interpolation" que usaremos tanto para la rueda derecha como para la izquierda. Para configurarlo se pincha en el bloque y le damos en el apartado "Edit table and breakpoints", una vez dentro se irá introduciendo valores desde -255 hasta 255 de nuestra tabla de datos.
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/224c1d92-09aa-491a-8524-98e0f4dec0d0)
-
-# Rueda derecha #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/11842e81-995e-435d-9927-9e1ce7ef9e35)
-
-# Rueda izquierda #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/44b3c49f-ec94-49fe-8e01-808a7e4f4032)
-
-## Extraer datos para la identificación a partir de un Pulso ##
-
-Para extraer estos datos volveremos a utilizar el modelo toma datos, pero esta vez utilizando una señal de pulso.
-
-# Toma datos #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/0501fbc7-6a2c-480f-9182-4145c34e4a84)
-
-# Señal de pulso #
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/6974783d-ee67-42d5-9c6e-578c32334e55)
-
-Vista desde el SCOPE:
-
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/b9da6b05-4542-4181-9813-1a8e1b6c63e9)
-
-# Video de como identifico la onda cuadrada #
-
-https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/807fe84d-36cc-46dd-90ea-aaa6c0cf3f9c
+<img width="790" height="537" alt="2" src="https://github.com/user-attachments/assets/a9902160-a16e-48f3-ba45-8f4035c6e7e6" />
 
 
-Al igual que con la rampa los valores se registran de la misma forma.
+## Encoder Model
+
+This model represents the encoder used to measure the wheel velocities, providing feedback for the control system.
+
+<img width="920" height="455" alt="3" src="https://github.com/user-attachments/assets/6879b805-7ace-4d44-a365-8074cff9fcde" />
+
+
+## Data Acquisition Model (Toma Datos)
+
+This model is used to collect system data, combining the hardware components to analyze the system response and identify key characteristics such as dead zone and saturation.
+
+<img width="1157" height="382" alt="4" src="https://github.com/user-attachments/assets/b5e2ad30-4aef-4600-a179-974d08e9440e" />
+
+
+## Ramp Input Signal
+
+A ramp signal is used as input to evaluate the system behavior, allowing the observation of dead zone and saturation effects.
+
+<img width="1073" height="626" alt="5" src="https://github.com/user-attachments/assets/c14153cb-a2f4-47a2-a8b1-3b8c3f8f01a1" />
+
+
+## Scope and Data Table
+
+From the scope, a delay in the system response can be observed, along with two saturation peaks (both positive and negative) and a small inertia at the end of the response.
+
+<img width="886" height="265" alt="6" src="https://github.com/user-attachments/assets/94501066-f447-482b-9e45-ef08be359d37" />
+
+
+The following table shows the data obtained from the experiment.
+
+<img width="1000" height="423" alt="7" src="https://github.com/user-attachments/assets/00e2ce11-e7de-47c1-8746-4ce6afe47e25" />
+
+
+## Dead Zone Determination Video
+
+The demo video is available in this folder as "dead_zone_and_saturation_identification_demo.mp4" and can be downloaded.
+
+## Open-Loop Control
+
+The open-loop control system makes use of the previously defined PIERO_HW model, together with a new subsystem called ControlBA.
+
+## ControlBA
+
+The ControlBA subsystem uses two blocks called "Lookup with Linear Lagrange Interpolation", one for each wheel (left and right).
+
+To configure these blocks, open the block settings and select "Edit table and breakpoints". Then, input the values obtained from the data table, ranging from -255 to 255.
+
+<img width="1112" height="358" alt="8" src="https://github.com/user-attachments/assets/61ca9e20-4f91-4fe2-bfd8-951b4b5d8f24" />
+
+
+## Right Wheel
+
+This block defines the control input for the right wheel based on the interpolation of the experimental data.
+
+<img width="1121" height="661" alt="9" src="https://github.com/user-attachments/assets/3525085a-9788-4373-ad2d-21482ecdb943" />
+
+
+## Left Wheel
+
+This block defines the control input for the left wheel using the same interpolation approach.
+
+<img width="1122" height="630" alt="10" src="https://github.com/user-attachments/assets/cbf1abc0-c18b-46c9-a27f-f9987303929b" />
+
+
+## Data Extraction for System Identification Using a Pulse Input
+
+To extract the data required for system identification, the "toma_datos" model is used again, this time with a pulse input signal.
+
+## Data Acquisition Model
+
+This model is used to collect the system response data under the pulse excitation.
+
+<img width="1192" height="591" alt="11" src="https://github.com/user-attachments/assets/fb10c4be-eaa7-49e5-907c-1ed4efb58ac6" />
+
+
+## Pulse Input Signal
+
+A pulse signal is applied to excite the system and capture its dynamic response.
+
+<img width="1073" height="621" alt="12" src="https://github.com/user-attachments/assets/971b71f8-6615-4d31-aa7c-05550366d721" />
+
+
+## Scope Visualization
+
+The system response can be observed in the scope, where the effect of the pulse input on the system output is shown.
+
+<img width="886" height="659" alt="13" src="https://github.com/user-attachments/assets/21651a25-4db5-443d-9d47-fc97f0415e1d" />
+
+## Square Wave Identification Video
+
+The demo video showing the square wave identification process is available in this folder as "system_identification_process_demo.mp4" and can be downloaded.
+
+As with the ramp input, the data is recorded in the same way.
 
 ## System identification ##
 
-Importamos nuestros para sacar la función de transferencia de nuestro PIERO.
+The collected data is imported in order to obtain the transfer function of the PIERO system.
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/c9e8f4f6-ec66-4f16-9be9-437bbfec2272)
+<img width="847" height="540" alt="14" src="https://github.com/user-attachments/assets/d1516db5-1d10-418c-9dc6-45a09967a6eb" />
 
-Aquí obtendremos nuestras funciones de transferencia, tanto de la rueda izquierda como de la rueda derecha. Vamos probando polos y ceros hasta elegir la mas adecuada. En mi caso he cogido 1 polo y ningún 0 en ambas, pues tenia menor error. Y también ajustamos en la gráfica para eliminar la inercia final.
+From this process, the transfer functions for both the left and right wheels are obtained. Different combinations of poles and zeros are tested to select the most suitable model.
 
-# Función tranferencia rueda derecha #
+In this case, a model with one pole and no zeros was selected for both wheels, as it provided the lowest error. The response was also adjusted to reduce the final inertia observed in the system.
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/d5c3083a-1dab-43e2-aae0-370d2970d1b6)
+## Right Wheel Transfer Function
 
-# Función tranferencia rueda izquierda #
+This section shows the identified transfer function for the right wheel.
+
+<img width="470" height="472" alt="15" src="https://github.com/user-attachments/assets/221f55e5-ea3a-47ff-90d0-9eeb1efa09a0" />
 
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/53c22b37-924a-4b8d-88b7-637516a9cf1b)
+## Left Wheel Transfer Function
+
+This section shows the identified transfer function for the left wheel.
+
+<img width="357" height="383" alt="16" src="https://github.com/user-attachments/assets/034c10be-a951-464e-9350-205ce439c714" />
 
 
-## Gemelo Digital ##
+## Digital Twin
 
-En ultimo lugar crearemos nuestro gemelo digital
+Finally, the digital twin of the system is developed.
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/bd7193ef-7a8d-41f4-8bda-e1ec3444e5eb)
+<img width="1006" height="482" alt="17" src="https://github.com/user-attachments/assets/9ffc47e7-9265-4b3e-81ca-32e204b7903e" />
 
-Donde tendremos integrado tambien nuestro subsistema Piero_Model, donde utilizaremos las funciones de tranferencia de ambas ruedas obtenidas anteriormente.
+This model includes the Piero_Model subsystem, where the transfer functions obtained for both wheels are implemented.
 
 ![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/8daefcc3-d98e-4368-ba0e-9cda55810c0b)
 
