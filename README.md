@@ -41,11 +41,9 @@ The system was tested in several scenarios to validate its performance:
 These experiments demonstrate the effectiveness of the control system under different operating conditions.
 
 ## Demo
-Demo video available in the repository.
-
+Demo videos are available in the corresponding folders of the repository, where each experiment includes its own demonstration.
 
 ## Author
 José Carlos Godoy Salvatierra
 
-## Summary
-This project demonstrates practical experience in embedded systems, real-time control, and hardware-software integration, with a focus on applying control theory to real-world systems.
+
