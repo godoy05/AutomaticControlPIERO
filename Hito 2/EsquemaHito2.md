@@ -143,7 +143,8 @@ Finally, the digital twin of the system is developed.
 
 This model includes the Piero_Model subsystem, where the transfer functions obtained for both wheels are implemented.
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/8daefcc3-d98e-4368-ba0e-9cda55810c0b)
+<img width="1037" height="467" alt="19" src="https://github.com/user-attachments/assets/52146656-3598-4b47-b94f-8a7ba06ece62" />
+
 
 
 
