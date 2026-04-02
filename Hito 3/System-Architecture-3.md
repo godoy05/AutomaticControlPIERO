@@ -49,7 +49,7 @@ This block represents the controlled system, where the implemented controllers r
 
 <img width="1167" height="551" alt="8" src="https://github.com/user-attachments/assets/c0c694f2-b57d-45ef-a0ea-0ed4c00ed8ee" />
 
-# Odometría #
+# Odometry #
 
 This subsystem is used to estimate and visualize the trajectory of the robot over time based on its motion.
 
