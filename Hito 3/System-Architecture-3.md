@@ -29,14 +29,14 @@ The demo video can be found in this folder as "disturbance_rejection_demo.mp4" a
 
 The kinematic test is composed of four main subsystems, each responsible for a different aspect of the vehicle’s motion and behavior. Together, they allow modeling, controlling, and evaluating the robot’s trajectory.
 
-# MCI (Inverse Kinematic Model)#
+# MCI (Inverse Kinematic Model)
 
 This subsystem computes the required wheel velocities from the desired linear and angular motion of the vehicle.
 
 <img width="575" height="362" alt="6" src="https://github.com/user-attachments/assets/eb697c85-53d9-4d04-9283-e4fd8075f3dc" />
 
 
-# MCD (Direct Kinematic Model)#
+# MCD (Direct Kinematic Model)
 
 This subsystem calculates the vehicle’s motion based on the wheel velocities, providing the resulting linear and angular displacement.
 
