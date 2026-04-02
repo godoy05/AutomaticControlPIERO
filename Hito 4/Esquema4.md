@@ -6,7 +6,8 @@ Este hito se compone de 4 partes:
 
 # 1. H41_1 metro #
 
-![image](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/fd178b78-3839-4fc4-9abe-0e4cb604be76)
+<img width="1225" height="516" alt="H41_1 etro" src="https://github.com/user-attachments/assets/2e08785c-fd1e-4928-87cf-c96846c98042" />
+
 
 Esta compuesto por tres subsistemas:
 
