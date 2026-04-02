@@ -1,7 +1,7 @@
 # ESP32-Based Autonomous Vehicle Control System
 
 ## Overview
-This project implements a real-time control system for a small autonomous vehicle using an ESP32. It focuses on applying feedback control to a physical system, where sensor data is used to continuously adjust the motor input and achieve stable behaviour.
+This project implements a real-time embedded control system for an autonomous vehicle using an ESP32. It focuses on applying feedback control to a physical system, where sensor data is continuously processed to regulate motor input and achieve stable and accurate behavior.
 
 The system is designed around a closed-loop architecture, where the vehicle measures its current state (such as speed, distance, or position), compares it to a desired reference, and corrects the error using a digital controller.
 
@@ -22,21 +22,30 @@ This loop runs continuously to ensure the system reacts in real time to changes 
 - Motor control using PWM  
 
 ## Technologies
-- ESP32  
-- C/C++   
+- ESP32     
 - PWM motor control  
 - Control systems (PI/PID)  
 
-## Context
-This project was developed as part of a control systems course, with the goal of bridging theory and real-world implementation on embedded systems.
+## System Architecture
+The system is organized into sensing, control, and actuation layers. Sensor data is processed in real time, a control algorithm (PI/PID) computes the required action, and PWM signals are applied to the motors to achieve the desired behavior.
+
+## Experiments
+The system was tested in several scenarios to validate its performance:
+
+- 1 meter position control  
+- 360° rotation  
+- Circular trajectory tracking  
+- Classroom exit trajectory  
+- Disturbance rejection  
+
+These experiments demonstrate the effectiveness of the control system under different operating conditions.
+
+## Demo
+Demo video available in the repository.
+
 
 ## Author
 José Carlos Godoy Salvatierra
 
-## Results
-
-### Position Control - Left Response
-![Left Graph](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/0caf7bf5-7be3-4971-b36d-815584cb8f18)
-
-### Position Control - Right Response
-![Right Graph](https://github.com/Escuela-de-Ingenierias-Industriales/RegulacionAutomatica23-godoy05/assets/145486537/28ec579c-47b0-40db-af56-182f38e8af95)
+## Summary
+This project demonstrates practical experience in embedded systems, real-time control, and hardware-software integration, with a focus on applying control theory to real-world systems.
